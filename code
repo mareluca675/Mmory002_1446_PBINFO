@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long s, n, a, i, imaxi, imini, maxi, mini = 2000000000, smaxi, smini;
+
+int main()
+{
+    ifstream fin("memory002.in");
+    ofstream fout("memory002.out");
+    
+    fin >> n;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        fin >> a;
+        
+        s += a;
+        
+        if(maxi < a)
+        {
+            maxi = a;
+            imaxi = i;
+            smaxi = s;
+        }
+        
+        if(mini > a)
+        {
+            mini = a;
+            imini = i;
+            smini = s;
+        }
+    }
+    
+    if(smaxi > smini)
+    {
+        s = smaxi - smini;
+        s = s + mini;
+    }
+    else
+    {
+        s = smini - smaxi;
+        s = s + maxi;
+    }
+    
+    fout << s;
+
+    return 0;
+}
